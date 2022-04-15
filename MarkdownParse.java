@@ -23,6 +23,12 @@ public class MarkdownParse {
                 break;
             }
 
+            while (openParen - closeBracket != 1) {
+                currentIndex = closeBracket + 1;
+                openBracket = markdown.indexOf("[", currentIndex);
+                closeBracket = markdown.indexOf("]", openBracket);
+            }
+            
             int exclamation = markdown.indexOf("!", openBracket - 1);
             if (openBracket - exclamation != 1) {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
