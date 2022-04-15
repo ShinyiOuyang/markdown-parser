@@ -27,6 +27,10 @@ public class MarkdownParse {
                 currentIndex = closeBracket + 1;
                 openBracket = markdown.indexOf("[", currentIndex);
                 closeBracket = markdown.indexOf("]", openBracket);
+                if (openBracket == -1 || 
+                    closeBracket == -1) {
+                    break;
+                }
             }
             
             int exclamation = markdown.indexOf("!", openBracket - 1);
