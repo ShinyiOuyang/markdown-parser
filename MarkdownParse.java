@@ -23,15 +23,24 @@ public class MarkdownParse {
                 break;
             }
 
+            boolean noLinkFound = false;
             while (openParen - closeBracket != 1) {
                 currentIndex = closeBracket + 1;
                 openBracket = markdown.indexOf("[", currentIndex);
                 closeBracket = markdown.indexOf("]", openBracket);
                 if (openBracket == -1 || 
                     closeBracket == -1) {
+                    // Break out of the entire program
+                    noLinkFound = true;
                     break;
                 }
             }
+
+            //Break out of the entire program
+            if (noLinkFound) {
+                break;
+            }
+
             int exclamation = markdown.indexOf("!", openBracket - 1);
             if (openBracket - exclamation != 1) {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
