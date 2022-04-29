@@ -1,4 +1,6 @@
 //https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
+//https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line
+
 
 import java.io.IOException;
 import java.nio.file.Files;
