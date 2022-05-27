@@ -44,7 +44,7 @@ public class MarkdownParse {
             }
 
             int exclamation = markdown.indexOf("!", openBracket - 1);
-            if (openBracket - exclamation != 1) {
+            if ((exclamation == -1) || (openBracket - exclamation != 1)) {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
             

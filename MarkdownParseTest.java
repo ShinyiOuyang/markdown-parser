@@ -103,4 +103,44 @@ public class MarkdownParseTest {
                 test8FileExpected,
                 MarkdownParse.getLinks(test8File));
     }
+
+    @Test
+    public void testSnippet1() throws IOException {
+        ArrayList<String> snippet1Expected = new ArrayList<String>();
+        snippet1Expected.add("`google.com");
+
+        String snippet1File = Files.readString(
+                Path.of("snippet1.md"));
+        assertEquals("checking links from snippet1",
+                snippet1Expected,
+                MarkdownParse.getLinks(snippet1File));
+    }
+
+    @Test
+    public void testSnippet2() throws IOException {
+        ArrayList<String> snippet2Expected = new ArrayList<String>();
+        snippet2Expected.add("a.com");
+        snippet2Expected.add("a.com(())");
+        snippet2Expected.add("example.com");
+
+        String snippet2File = Files.readString(
+                Path.of("snippet2.md"));
+        assertEquals("checking links from snippet2",
+                snippet2Expected,
+                MarkdownParse.getLinks(snippet2File));
+    }
+
+    @Test
+    public void testSnippet3() throws IOException {
+        ArrayList<String> snippet3Expected = new ArrayList<String>();
+        snippet3Expected.add("https://www.twitter.com");
+        snippet3Expected.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedu");
+        snippet3Expected.add("https://cse.ucsd.edu/");
+
+        String snippet3File = Files.readString(
+                Path.of("snippet3.md"));
+        assertEquals("checking links from snippet3",
+                snippet3Expected,
+                MarkdownParse.getLinks(snippet3File));
+    }
 }
